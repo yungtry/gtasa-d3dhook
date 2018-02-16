@@ -87,7 +87,7 @@ function setNoclip()
 end
 
 function createDirect3D()
---create a background image (in this case, just a simple 1 pixel color stretched)
+--create a background image
 background=createPicture()
 bmp=picture_getBitmap(background);
 graphic_setHeight(bmp,1)
@@ -114,7 +114,7 @@ d3dhook_sprite_setHeight(bgsprite,barsize)
 font=createFont()
 setProperty(font,"color",0xdff2)
 fontmap=d3dhook_createFontmap(font)
-lineheight=d3dhook_texture_getHeight(fontmap) --fontmap inherits from texture so this can be used
+lineheight=d3dhook_texture_getHeight(fontmap)
 --health = readFloat("0xB6F5F0+0x540")
 health = readFloat('[0xB6F5F0]+0x540')
 --print(health)
@@ -160,17 +160,17 @@ function keydown(key, char)
   end
  end
  if (key == VK_UP and _G.noclip == 1) then
-    writeFloat('[[0xB6F5F0]+0x14]+0x38', readFloat('[[0xB6F5F0]+0x14]+0x38')+1.5)
+    writeFloat('[[0xB6F5F0]+0x14]+0x38', readFloat('[[0xB6F5F0]+0x14]+0x38')+0.5)
  elseif (key == VK_DOWN and _G.noclip == 1) then
-    writeFloat('[[0xB6F5F0]+0x14]+0x38', readFloat('[[0xB6F5F0]+0x14]+0x38')-1.5)
+    writeFloat('[[0xB6F5F0]+0x14]+0x38', readFloat('[[0xB6F5F0]+0x14]+0x38')-0.5)
  elseif (key == forward and  _G.noclip == 1) then
-    writeFloat('[[0xB6F5F0]+0x14]+0x30', readFloat('[[0xB6F5F0]+0x14]+0x30')+3)
+    writeFloat('[[0xB6F5F0]+0x14]+0x30', readFloat('[[0xB6F5F0]+0x14]+0x30')+1)
  elseif (key == back and  _G.noclip == 1) then
-    writeFloat('[[0xB6F5F0]+0x14]+0x30', readFloat('[[0xB6F5F0]+0x14]+0x30')-3)
+    writeFloat('[[0xB6F5F0]+0x14]+0x30', readFloat('[[0xB6F5F0]+0x14]+0x30')-1)
  elseif (key == right and  _G.noclip == 1) then
-    writeFloat('[[0xB6F5F0]+0x14]+0x34', readFloat('[[0xB6F5F0]+0x14]+0x34')+3)
+    writeFloat('[[0xB6F5F0]+0x14]+0x34', readFloat('[[0xB6F5F0]+0x14]+0x34')+1)
  elseif (key == left and  _G.noclip == 1) then
-    writeFloat('[[0xB6F5F0]+0x14]+0x34', readFloat('[[0xB6F5F0]+0x14]+0x34')-3)
+    writeFloat('[[0xB6F5F0]+0x14]+0x34', readFloat('[[0xB6F5F0]+0x14]+0x34')-1)
  end
 end
 
